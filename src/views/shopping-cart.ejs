@@ -1,0 +1,21 @@
+<%- include('./layouts/header', {title: "Shopping cart"}); -%>
+
+<h1 class="alert alert-success">Carrito de compras</h1>
+<% shirts.map((shirts) => { %>
+<div class="container mb-3">
+  <div class="card text-center">
+    <div class="card-header">Camiseta: <%= shirts.name %></div>
+    <div class="card-body">
+      <h5 class="card-title"><%= shirts.description %></h5>
+      <p class="card-text">Talla: <%= shirts.size %></p>
+      <p class="card-text">Precio: <%= shirts.price %></p>
+    </div>
+    <div class="card-footer text-body-secondary"><%= shirts.gender %></div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-12 d-grid mt-4">
+    <a class="btn btn-outline-success" href="/admin/orders/create">¡Ordenar!</a>
+  </div>
+</div>
+<% }) %> <%- include('./layouts/footer'); -%>

@@ -1,0 +1,28 @@
+<%- include('./layouts/header', {title: title}); -%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="alert bg-warning border text-body-emphasis text-center">
+        Busqueda por categoria
+      </h1>
+    </div>
+  </div>
+</div>
+<% categories.map((categories) =>{%>
+<h1 class="alert alert-success"><%= categories.name%></h1>
+<% shirts = shirts.filter((shirts) => shirts.size == categories.description) %>
+<% shirts.map((shirts) => {%>
+<div class="container mb-3">
+  <div class="card text-center">
+    <div class="card-header">Camiseta: <%= shirts.name %></div>
+    <div class="card-body">
+      <h5 class="card-title"><%= shirts.description %></h5>
+      <p class="card-text">Talla: <%= shirts.size %></p>
+      <p class="card-text">Precio: <%= shirts.price %></p>
+      <a href="/shopping-cart" class="btn btn-primary">Añadir al carrito</a>
+    </div>
+    <div class="card-footer text-body-secondary"><%= shirts.gender %></div>
+  </div>
+</div>
+<% }) %> <% }) %> <%- include('./layouts/footer'); -%>

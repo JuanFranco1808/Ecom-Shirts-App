@@ -1,0 +1,45 @@
+<%- include('../../layouts/header', {title: "Editar categoria"}); -%>
+
+<h1 class="alert alert-success">Editar categoria</h1>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <!-- Formulario -->
+    <form method="POST" action="/admin/categories/update">
+      <input type="number" id="id" name="id" value="<%=category.id%>" hidden />
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre de la Categoria</label>
+        <input
+          name="name"
+          type="text"
+          class="form-control"
+          id="name"
+          value="<%=category.name%>"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label"
+          >Descripcion de la Categoria</label
+        >
+        <input
+          name="description"
+          type="text"
+          class="form-control"
+          id="description"
+          value="<%=category.description%>"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+    <div class="row">
+      <div class="col-12 mt-2">
+        <a href="/admin/categories/categories" class="btn btn-primary"
+          >Regresar</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<%- include('../../layouts/footer'); -%>

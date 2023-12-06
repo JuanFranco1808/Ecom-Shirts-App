@@ -1,0 +1,52 @@
+<%- include('../../layouts/header', {title: "Listado de camisetas"}); -%>
+
+<h1 class="alert alert-success">Listado de camisetas</h1>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <table class="table table-bordered border-primary">
+      <tr class="table-success">
+        <th>Id de la camiseta</th>
+        <th>Nombre de la camiseta</th>
+        <th>Tamaño de la camiseta</th>
+        <th>Genero de la camiseta</th>
+        <th>Descripcion de la camiseta</th>
+        <th>Precio de la camiseta</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+      <% shirts.map( (shirts) =>{%>
+      <tr class="table-warning">
+        <td><%= shirts.id %></td>
+        <td><%= shirts.name %></td>
+        <td><%= shirts.size %></td>
+        <td><%= shirts.gender %></td>
+        <td><%= shirts.description %></td>
+        <td><%= shirts.price %></td>
+        <td>
+          <a href="/admin/shirts/edit/<%= shirts.id %>" class="btn btn-success"
+            >Editar</a
+          >
+        </td>
+        <td>
+          <form action="/admin/shirts/destroy/<%= shirts.id %>" method="POST">
+            <input
+              type="submit"
+              class="btn btn-danger"
+              onclick="return confirm('Está Seguro?')"
+              value="Eliminar"
+            />
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <a href="/admin/shirts/create" class="btn btn-primary"
+      >Añadir una camiseta</a
+    >
+    <a href="/admin" class="btn btn-primary">Regresar</a>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+
+<%- include('../../layouts/footer'); -%>

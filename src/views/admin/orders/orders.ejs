@@ -1,0 +1,50 @@
+<%- include('../../layouts/header', {title: "Listado ordenes"}); -%>
+
+<h1 class="alert alert-success">Listado ordenes</h1>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <table class="table table-bordered border-primary">
+      <tr class="table-success">
+        <th>Id de la orden</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Correo Electronico</th>
+        <th>Dirección</th>
+        <th>Fecha de la orden</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+      <% orders.map( (orders) =>{%>
+      <tr class="table-warning">
+        <td><%= orders.id %></td>
+        <td><%= orders.name %></td>
+        <td><%= orders.lastName %></td>
+        <td><%= orders.email %></td>
+        <td><%= orders.address %></td>
+        <td><%= orders.date %></td>
+        <td>
+          <a href="/admin/orders/edit/<%= orders.id %>" class="btn btn-success"
+            >Editar</a
+          >
+        </td>
+        <td>
+          <form action="/admin/orders/destroy/<%= orders.id %>" method="POST">
+            <input
+              type="submit"
+              class="btn btn-danger"
+              onclick="return confirm('Está Seguro?')"
+              value="Delete"
+            />
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <a href="/admin/orders/create" class="btn btn-primary">Añadir orden</a>
+    <a href="/admin" class="btn btn-primary">Regresar</a>
+  </div>
+</div>
+<div class="col-md-1"></div>
+
+<%- include('../../layouts/footer'); -%>

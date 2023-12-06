@@ -1,0 +1,51 @@
+<%- include('../../layouts/header', {title: "Listado categorias"}); -%>
+
+<h1 class="alert alert-success">Listado categorias</h1>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <table class="table table-bordered border-primary">
+      <tr class="table-success">
+        <th>Id de la Categoria</th>
+        <th>Nombre de la Categoria</th>
+        <th>Descripcion de la Categoria</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+      <% categories.map( (categories) =>{%>
+      <tr class="table-warning">
+        <td><%= categories.id %></td>
+        <td><%= categories.name %></td>
+        <td><%= categories.description %></td>
+        <td>
+          <a
+            href="/admin/categories/edit/<%= categories.id %>"
+            class="btn btn-success"
+            >Editar</a
+          >
+        </td>
+        <td>
+          <form
+            action="/admin/categories/destroy/<%= categories.id %>"
+            method="POST"
+          >
+            <input
+              type="submit"
+              class="btn btn-danger"
+              onclick="return confirm('Está Seguro?')"
+              value="Delete"
+            />
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+    <a href="/admin/categories/create" class="btn btn-primary"
+      >Añadir categoria</a
+    >
+    <a href="/admin" class="btn btn-primary">Regresar</a>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<%- include('../../layouts/footer'); -%>
